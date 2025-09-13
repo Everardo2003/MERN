@@ -13,4 +13,4 @@ const todoSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Exportar el modelo
-module.exports = mongoose.model("Todo" ,todoSchema,"mi_coleccion");
+module.exports = mongoose.model("Todo" ,todoSchema,"datos");
