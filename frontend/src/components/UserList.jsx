@@ -103,7 +103,7 @@ function UserList() {
             justifyContent: 'space-between',
             alignItems: 'center'
           }}>
-            <span>{user.nombre}, {user.edad}</span>
+            <span>{user.nombre}</span>
             <button 
               onClick={() => deleteUser(user._id)}
               disabled={loading}
@@ -121,10 +121,6 @@ function UserList() {
           </li>
         ))}
       </ul>
-
-      {users.length === 0 && !loading && (
-        <p>No hay usuarios registrados</p>
-      )}
     </div>
   );
 }
