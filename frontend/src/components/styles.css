@@ -1,4 +1,4 @@
-div{
+.principal{
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -13,6 +13,11 @@ ul{
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+.botones{
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+}
 .boton{
     padding: 8px 16px;
     background-color:#007bff;
@@ -24,6 +29,14 @@ ul{
 .boton-eliminar{
     padding: 5px 10px;
     background-color:#dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.boton-actualizar{
+    padding: 5px 10px;
+    background-color:green;
     color: white;
     border: none;
     border-radius: 3px;

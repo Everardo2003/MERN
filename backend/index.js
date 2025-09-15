@@ -62,7 +62,7 @@ app.post("/api/check", async (req, res) => {
 });
 
 
-// Actualizar TODO (corregido)
+// Actualizar usuario
 app.put("/api/check/:id", async (req, res) => {
   try {
     const { nombre } = req.body;
@@ -74,7 +74,7 @@ app.put("/api/check/:id", async (req, res) => {
     const usuarioActualizado = await usuario.findByIdAndUpdate(
       req.params.id,
       { nombre },
-      { new: true } // devuelve el documento actualizado
+      { new: true } 
     );
 
     if (!usuarioActualizado) {
