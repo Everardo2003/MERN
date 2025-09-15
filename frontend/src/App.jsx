@@ -7,18 +7,8 @@ import "./App.css"
 
 function App() {
   return (
-    <html>
-       <body>
-         <header className="header">
-            <div className="Titulo">
-              <h1>CRUD CON MERN</h1>
-            </div>
-            <div>
-              <UserList/>
-            </div>
-         </header>
-       </body>
-    </html>
+    <UserList/>
+            
   );
 }
 

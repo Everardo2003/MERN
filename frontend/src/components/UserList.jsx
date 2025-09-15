@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import './styles.css';
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -22,8 +23,6 @@ function UserList() {
 
   // Insertar usuario
   const addUser = async () => {
-    if (!nombre.trim()) return;
-    
     setLoading(true);
     try {
       const res = await axios.post("http://localhost:5000/api/check", { nombre });
@@ -47,37 +46,23 @@ function UserList() {
     }
   };
 
-  // Manejar tecla Enter
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !loading) {
-      addUser();
-    }
-  };
+  
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div>
       <h2>Lista de Usuarios</h2>
-
       {/* Formulario para agregar */}
-      <div style={{ marginBottom: '20px' }}>
-        <input
+      <div>
+        <input className="formulario"
           type="text"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
-          onKeyPress={handleKeyPress}
           placeholder="Nuevo usuario"
           disabled={loading}
-          style={{ 
-            marginRight: '10px', 
-            padding: '8px',
-            border: '1px solid #ccc',
-            borderRadius: '4px'
-          }}
         />
         <button 
           type="button" 
           onClick={addUser}
-          disabled={loading || !nombre.trim()}
           style={{
             padding: '8px 16px',
             backgroundColor: loading ? '#ccc' : '#007bff',

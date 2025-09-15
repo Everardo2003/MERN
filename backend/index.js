@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Todo = require("./models/Todo");
+const usuario = require("./models/Todo");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,7 +23,7 @@ app.get('/ping', (req, res) => {
 // GET todos los todos
 app.get("/api/check", async (req, res) => {
   try {
-    const todos = await Todo.find(); 
+    const todos = await usuario.find(); 
     res.json(todos);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -33,7 +33,7 @@ app.get("/api/check", async (req, res) => {
 // DELETE todo por id
 app.delete("/api/check/:id", async (req, res) => {
   try {
-    const todo = await Todo.findByIdAndDelete(req.params.id);
+    const todo = await usuario.findByIdAndDelete(req.params.id);
     if (!todo) {
       return res.status(404).json({ mensaje: "Elemento no encontrado" });
     }
@@ -43,24 +43,24 @@ app.delete("/api/check/:id", async (req, res) => {
   }
 });
 
-// Crear NUEVO TODO (corregido)
+// Crear NUEVO Usuario
 app.post("/api/check", async (req, res) => {
   try {
-    const { nombre } = req.body;
+    const nombre = req.body?.nombre?.trim();
 
-    if (!nombre || !nombre.trim()) {
-      return res.status(400).json({ error: "El nombre es requerido" });
+    if (!nombre) {
+      return res.status(400).json({ error: "El campo 'nombre' es requerido." });
     }
 
-    // ✅ CORRECTO: Crear nuevo Todo y guardar con save()
-    const nuevoTodo = new Todo({ nombre });
-    await nuevoTodo.save(); // ✅ Cambiado de insertOne() a save()
+    const todo = await new usuario({nombre}).save();
+    res.status(201).json(todo);
 
-    res.status(201).json(nuevoTodo);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Error en POST /api/check:", err.message);
+    res.status(500).json({ error: "Error interno en el servidor." });
   }
 });
+
 
 // Actualizar TODO (corregido)
 app.put("/api/check/:id", async (req, res) => {

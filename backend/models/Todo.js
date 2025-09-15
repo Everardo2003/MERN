@@ -2,16 +2,11 @@ const mongoose = require("mongoose");
 
 // Definir esquema
 const todoSchema = new mongoose.Schema({
-  title: {
+  nombre: {
     type: String,
-    required: true
-  },
-  completed: {
-    type: Boolean,
-    default: false
-  },
-  
+    required: false
+  }
 }, { timestamps: true });
 
 // Exportar el modelo
-module.exports = mongoose.model("Todo" ,todoSchema,"datos");
+module.exports = mongoose.model("usuario" ,todoSchema,"datos");
