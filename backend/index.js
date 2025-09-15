@@ -71,18 +71,17 @@ app.put("/api/check/:id", async (req, res) => {
       return res.status(400).json({ error: "El nombre es requerido" });
     }
 
-    // ✅ CORRECTO: Usar Todo en lugar de Usuario
-    const todoActualizado = await Todo.findByIdAndUpdate(
+    const usuarioActualizado = await usuario.findByIdAndUpdate(
       req.params.id,
       { nombre },
       { new: true } // devuelve el documento actualizado
     );
 
-    if (!todoActualizado) {
-      return res.status(404).json({ error: "Todo no encontrado" });
+    if (!usuarioActualizado) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
     }
 
-    res.json(todoActualizado);
+    res.json(usuarioActualizado);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

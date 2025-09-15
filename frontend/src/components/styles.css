@@ -3,10 +3,38 @@ div{
     margin-left: 10px;
     margin-right: 10px;
 }
+ul{
+    padding: 0;
+}
 .formulario{
     margin-right:10px;
     margin-left: 10px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+.boton{
+    padding: 8px 16px;
+    background-color:#007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.boton-eliminar{
+    padding: 5px 10px;
+    background-color:#dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.lista{
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
