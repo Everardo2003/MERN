@@ -11,8 +11,8 @@ function UserList() {
   // Obtener usuarios
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/check");
-      setUsers(res.data);
+      const usuarios = await axios.get("http://localhost:5000/api/check");
+      setUsers(usuarios.data);
     } catch (err) {
       console.error("Error fetching users:", err);
     }

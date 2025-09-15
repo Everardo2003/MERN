@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Definir esquema
-const todoSchema = new mongoose.Schema({
+const UsuarioSchema = new mongoose.Schema({
   nombre: {
     type: String,
     required: false
@@ -9,4 +9,4 @@ const todoSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Exportar el modelo
-module.exports = mongoose.model("usuario" ,todoSchema,"datos");
+module.exports = mongoose.model("usuario" ,UsuarioSchema,"datos");
